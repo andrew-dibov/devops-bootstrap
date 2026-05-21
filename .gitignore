@@ -1,0 +1,14 @@
+*
+
+# ---
+
+!*.tf
+!*.sh
+
+!.gitignore
+!README.md
+!bash/
+
+# ---
+
+backend.s3.tf
