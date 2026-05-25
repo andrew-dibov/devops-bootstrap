@@ -3,14 +3,16 @@
 [OAuth токен](https://yandex.cloud/en/docs/iam/concepts/authorization/oauth-token)
 
 ```bash
-echo "export YC_TOKEN=" > .env
-# Подставь OAuth токен : не пали в истории
-source .env
 
+cat > .env <<EOF
+export YC_TOKEN=<oauth-token>
 export YC_CLOUD_ID=$(yc config get cloud-id)
 export YC_FOLDER_ID=$(yc config get folder-id)
+EOF
 
-terraform init && terraform apply -auto-approve
+# положи токен
+
+source .env && terraform init && terraform apply -auto-approve
 ```
 
 # Stage B
@@ -18,8 +20,6 @@ terraform init && terraform apply -auto-approve
 ```bash
 sudo chmod +x bash/*
 
-./bash/init.sh # перегон стейта в бакет
-unset YC_TOKEN
-
-./bash/apply.sh # применение изменений
+./bash/init.sh && unset YC_TOKEN
+./bash/apply.sh
 ```

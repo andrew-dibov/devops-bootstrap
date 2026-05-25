@@ -1,4 +1,1 @@
-source .env
-source aws.env
-
-terraform apply -auto-approve
+source .env && terraform apply -auto-approve
