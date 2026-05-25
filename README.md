@@ -18,8 +18,5 @@ source .env && terraform init && terraform apply -auto-approve
 # Stage B
 
 ```bash
-sudo chmod +x bash/*
-
-./bash/init.sh && unset YC_TOKEN
-./bash/apply.sh
+sudo chmod +x bash/* && ./bash/init.sh
 ```
