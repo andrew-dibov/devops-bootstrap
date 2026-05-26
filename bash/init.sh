@@ -5,7 +5,7 @@ while [[ -z "$YC_TOKEN" ]]; do
   printf "YC token [https://yandex.cloud/en/docs/iam/concepts/authorization/oauth-token] : "
   read YC_TOKEN
   if [[ -z "$YC_TOKEN" ]]; then
-    printf "Can not be empty"
+    printf "YC token can not be empty"
   fi
 done
 
@@ -31,6 +31,7 @@ echo "export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID" >> .env
 echo "export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY" >> .env
 source .env
 
-BUCKET=$(terraform output -raw sb__terraform_state_bucket)
+S3_BUCKET_NAME=$(terraform output -raw sb__terraform_state_bucket)
+
 mv backend.s3.tf.disabled backend.s3.tf
-terraform init -backend-config=bucket="$BUCKET" -force-copy -reconfigure && rm *tfstate*
+terraform init -backend-config=bucket="$S3_BUCKET_NAME" -force-copy -reconfigure && rm *tfstate*
