@@ -21,7 +21,7 @@
 - `compute.editor` : работа с виртуальными машинами
 - `lockbox.admin` : работа с хранилищем секретов
 
-### Слой 3 : Основная инфраструктура : Terraform + Yandex Cloud
+### Слой 3 : Инфраструктура : Terraform + Yandex Cloud
 
 - **Lockbox** : хранилище секретов
 - **Container Registry** : реестр контейнеров
